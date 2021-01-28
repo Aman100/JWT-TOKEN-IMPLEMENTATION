@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body>
+<center>
+<h1>Registration Form</h1>
+<form th:action="@{/handler}"  method="post">
+FirstName : <input type='text' name='firstname' id='fname'><br/><br/>
+LastName  : <input type='text' name='lastname' id='lname'><br/><br/>
+MobileNumber : <input type='text' name='mobileNumber' id='mob'><br/><br/>
+Email : <input type='text' name='email' id='email'><br/><br/>
+Username : <input type='text' name='username' id='usrnm'><br/><br/>
+Password : <input type='password' name='password' id='pass'><br/><br/>
+ConformPassword : <input type='password' name='cnfrmpass' id='cnfrmpass'><br/><br/>
+<input type='submit' value='Submit'>
+</form>
+</center>
+</body>
+</html>
+
+<!--
+<script type='text/javascript'>
+<script type='text/javascript'>
+function sendRequest(frm)
+{
+alert(document.getElementById("formid"));
+var data={};
+
+frm.addEventListener('submit',function(e){
+e.preventDefault();
+});
+
+data['firstname']=frm.fname.value();
+$.ajax({
+type: 'post',
+url: '/handler',
+data: JSON.stringify(data),
+contentType: "application/json; charset=utf-8",
+traditional: true,
+success: function (data) {
+}
+});
+}
+<!-- Placeholder -->
+</script>
+-->
+
+
+
+<!--
+/*
+JSONString['lastname']=frm.lname.value;
+JSONString['mobileNumber']=frm.mob.value;
+JSONString['email']=frm.email.value;
+JSONString['username']=frm.usrnm.value;
+JSONString['password']=frm.pass.value;
+*/
+function sendRequest(frm)
+{
+var JSONString={};
+JSONString['firstname']=frm.fname.value;
+alert(JSON.stringify(JSONString));
+request=new XMLHttpRequest();
+try
+{
+//request.onreadystatechange=finish;
+request.open("POST","/handler", false);
+request.setRequestHeader("Content-Type","application/json");
+request.send(JSON.stringify(JSONString));
+}
+catch(exception)
+{
+alert('Unable to connect to server');
+}
+}
+-->
